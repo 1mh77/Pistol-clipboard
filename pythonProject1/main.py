@@ -44,9 +44,9 @@ def setup_hotkeys(queue_manager):
     keyboard.add_hotkey('ctrl+v', queue_manager.paste_clipboard, suppress=True)
 
 def main():
-    queue_manager = ClipboardQueueManager(None)  # 初始化时没有GUI回调
-    gui = ClipboardGUI()
-    gui.set_queue_manager(queue_manager)
+    queue_manager = ClipboardQueueManager(None)
+    # 直接在创建GUI实例时传递queue_manager
+    gui = ClipboardGUI(queue_manager)
 
     # 设置队列管理器的GUI更新回调
     queue_manager.update_gui_callback = gui.refresh_display
